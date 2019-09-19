@@ -1,0 +1,43 @@
+{
+  "name": "CG3-Pawn",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "repository": "https://github.com/Jkierem/CG3-Pawn",
+  "author": "Juan Miguel Gomez <juanmiguelgomez8@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@juan-utils/functions": "latest",
+    "@juan-utils/simple-logger": "latest",
+    "@juan-utils/structures": "latest",
+    "three": "^0.108.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
+  },
+  "scripts": {
+    "start": "yarn docs",
+    "build": "babel src/index.js -d build --copy-files",
+    "build:watch": "babel src/index.js -w -d build --copy-files",
+    "docs": "webpack-dev-server --mode development",
+    "docs:prod": "webpack --mode production"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-proposal-class-properties"
+    ]
+  }
+}
