@@ -1,8 +1,7 @@
 import * as THREE from 'three'
 import createCore from './core';
-import Grid from './grid';
 import City from './city';
-import { random, integerRandom, prop } from '@juan-utils/functions';
+import { buildCityScene } from './scenes';
 
 const scene = new THREE.Scene();
 const aspect = window.innerWidth / window.innerHeight;
@@ -14,11 +13,17 @@ document.body.appendChild(renderer.domElement);
 
 const config = {
     width: 10,
-    height: 10
+    height: 10,
+    tilesWidth:7,
+    tilesHeigth: 7,
+    seedCount: 3,
 }
 
 const city = new City(config);
-console.log(city.pickRandomSeeds().map(prop("data")))
+city.generateTiles()
+city.populateGrids()
+
+buildCityScene(city,scene)
 
 const core = createCore(renderer, scene, camera);
 core.loop();

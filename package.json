@@ -1,13 +1,13 @@
 {
-  "name": "CG3-Pawn",
+  "name": "city",
   "version": "1.0.0",
   "main": "./src/index.js",
-  "repository": "https://github.com/Jkierem/CG3-Pawn",
+  "repository": "https://github.com/Jkierem/CG6-Automata",
   "author": "Juan Miguel Gomez <juanmiguelgomez8@gmail.com>",
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@juan-utils/functions": "latest",
+    "@juan-utils/functions": "0.0.26",
     "@juan-utils/simple-logger": "latest",
     "@juan-utils/structures": "latest",
     "three": "^0.108.0"
@@ -19,17 +19,16 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^1.0.0",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0"
   },
   "scripts": {
-    "start": "yarn docs",
-    "build": "babel src/index.js -d build --copy-files",
-    "build:watch": "babel src/index.js -w -d build --copy-files",
-    "docs": "webpack-dev-server --mode development",
-    "docs:prod": "webpack --mode production"
+    "start": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
   },
   "babel": {
     "presets": [

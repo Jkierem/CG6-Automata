@@ -1,9 +1,13 @@
-var path = require('path');
+const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const OUTPUT_PATH = path.resolve(__dirname, 'docs');
-const ENTRY_POINT = path.resolve(__dirname, 'src/index.js');
-const HTML_TEMPLATE_PATH = path.join(__dirname, "public/index.html")
+const fromRoot = (...dirs) => path.resolve(__dirname,...dirs);
+
+const OUTPUT_PATH = fromRoot('build');
+const ENTRY_POINT = fromRoot('src/index.js');
+const HTML_TEMPLATE_PATH = fromRoot("public/index.html");
+const PUBLIC_FOLDER = fromRoot('public')
+const SRC_FOLDER = fromRoot("src")
 const BUNDLE_NAME = 'bundle.js'
 
 module.exports = {
@@ -23,6 +27,10 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
@@ -32,12 +40,15 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".js", ".jsx"],
+        alias: {
+            src: SRC_FOLDER
+        }
     },
     devServer: {
-        contentBase: OUTPUT_PATH,
+        contentBase: PUBLIC_FOLDER,
         port: 8000,
-        stats: "minimal"
+        stats: "minimal",
     },
     stats: {
         colors: true
