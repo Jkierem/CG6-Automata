@@ -14,8 +14,8 @@ document.body.appendChild(renderer.domElement);
 const config = {
     width: 10,
     height: 10,
-    tilesWidth:7,
-    tilesHeigth: 7,
+    tilesWidth:10,
+    tilesHeigth: 10,
     seedCount: 3,
 }
 
